@@ -1,0 +1,286 @@
+@use "sass:map";
+
+@import "bootstrap/scss/bootstrap.scss";
+@import "~roboto-sass/scss/roboto";
+
+$primary-color: #7854f7;
+$primary-color-light: #9a7dff;
+$secondary-color: #272d4e;
+$gray-color: #94a2b3;
+
+body {
+  background: linear-gradient(
+    180deg,
+    #e5efff 0%,
+    rgba(229, 239, 255, 0.262661) 83.7%,
+    rgba(229, 239, 255, 0) 100%
+  );
+}
+.woo-commerce-navbar-brand-img {
+  @media (min-width: map.get($grid-breakpoints, "sm")) {
+    width: 117px;
+    height: 25px;
+  }
+  @media (max-width: map.get($grid-breakpoints, "sm")) {
+    width: 100%;
+    height: 17px;
+  }
+}
+.main-layout-content {
+  margin-top: 60px;
+}
+.navbar-custom {
+  padding-top: 20px;
+  @media (max-width: map.get($grid-breakpoints, "sm")) {
+    padding-bottom: 0px;
+  }
+}
+.text-align-right {
+  text-align: right;
+}
+.navbar-menu-btn-container {
+  padding-right: 0px;
+}
+.navbar-menu-btn {
+  background-color: transparent !important;
+  border-color: transparent !important;
+  margin-right: -20px;
+}
+.navbar-collapsable {
+  text-align: center;
+}
+.navbar-container {
+  @media (max-width: map.get($grid-breakpoints, "sm")) {
+    margin-right: 0px;
+    margin-left: 0px;
+  }
+}
+.navbar-section-title-container {
+  @media (max-width: map.get($grid-breakpoints, "sm")) {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border: solid $primary-color;
+    border-radius: 10px;
+  }
+}
+.navbar-section-title {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 13.5px;
+  line-height: 16px;
+  color: $secondary-color;
+  text-decoration: none;
+  &:hover {
+    color: $primary-color;
+  }
+  @media (max-width: map.get($grid-breakpoints, "sm")) {
+    color: $primary-color;
+  }
+}
+.main-title {
+  padding-top: 70px;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 700;
+  @media (min-width: map.get($grid-breakpoints, "sm")) {
+    font-size: 63.75px;
+    line-height: 71px;
+  }
+  @media (max-width: map.get($grid-breakpoints, "sm")) {
+    font-size: 30.13px;
+    line-height: 34px;
+  }
+
+  color: $secondary-color;
+}
+.featured-img {
+  width: 508px;
+  height: 422px;
+}
+.main-subtitles-container {
+  margin-top: 15px;
+  margin-bottom: 25px;
+}
+.main-subtitle {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13.5px;
+  line-height: 19px;
+  /* or 139% */
+
+  color: $gray-color;
+}
+.cta-txt {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13.5px;
+  line-height: 19px;
+  /* identical to box height, or 139% */
+  color: $gray-color;
+  align-self: center;
+  @media (max-width: map.get($grid-breakpoints, "sm")) {
+    margin-top: 10px;
+  }
+  @media (min-width: map.get($grid-breakpoints, "sm")) {
+    padding-right: 0px;
+    padding-left: 0px;
+  }
+}
+.start-a-new-store-btn {
+  @media (min-width: map.get($grid-breakpoints, "sm")) {
+    width: 100%;
+  }
+  @media (max-width: map.get($grid-breakpoints, "sm")) {
+    width: 60%;
+  }
+  height: 54px;
+  background: $primary-color;
+  border-radius: 45px;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 13.5px;
+  line-height: 16px;
+  /* identical to box height */
+
+  text-align: center;
+  color: white;
+  &:hover {
+    background: $primary-color !important;
+    border-color: $primary-color !important;
+  }
+}
+.middle-title-container {
+  margin-top: 160px;
+  margin-bottom: 40px;
+}
+.middle-title-text {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 41.25px;
+  line-height: 52px;
+  /* or 127% */
+
+  text-align: center;
+
+  color: $secondary-color;
+
+  mix-blend-mode: normal;
+}
+
+.cards-container {
+  margin-bottom: 100px;
+}
+
+.card-mt-2x {
+  margin-top: 30px;
+}
+
+.card-mt-3x {
+  margin-top: 50px;
+}
+
+.card-title {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 52px;
+  /* or 239% */
+
+  color: $secondary-color;
+}
+.card-subtitle {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13.5px;
+  line-height: 22px;
+  /* or 167% */
+
+  color: $gray-color;
+}
+.card-link {
+  &:hover {
+    color: $primary-color;
+  }
+}
+.footer {
+  background-color: $primary-color;
+  padding-bottom: 200px;
+  padding-top: 80px;
+  @media (max-width: map.get($grid-breakpoints, "sm")) {
+    padding-right: $spacer * 1;
+    padding-left: $spacer * 1;
+  }
+}
+.footer-sections-links {
+  // justify-content: center;
+}
+
+.footer-text-icons-container {
+  padding-bottom: 80px;
+  justify-content: center;
+}
+
+.footer-text-icon-title {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  margin-left: 15px;
+  /* or 262% */
+
+  color: white;
+}
+.footer-text-icon-container {
+  display: flex;
+  flex-direction: row;
+  @media (max-width: map.get($grid-breakpoints, "sm")) {
+    padding-bottom: $spacer * 2;
+  }
+}
+.footer-column-title {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 10.5px;
+  line-height: 39px;
+  white-space: nowrap;
+  /* identical to box height, or 375% */
+  text-transform: uppercase;
+  color: white;
+}
+.footer-column-link {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 9px;
+  line-height: 16px;
+  /* or 183% */
+  color: white;
+  &:hover {
+    color: white;
+  }
+}
+
+.footer-column-container {
+  @media (max-width: map.get($grid-breakpoints, "sm")) {
+    padding-bottom: $spacer * 2.5;
+  }
+}
+
+.footer-divider {
+  border: 0.75px solid $primary-color-light;
+  margin-bottom: 20px;
+  @media (min-width: map.get($grid-breakpoints, "sm")) {
+    width: 80%;
+    justify-content: center;
+  }
+}
