@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import React from "react";
 // import Image from "react-bootstrap/Image";
 import Image from "next/image";
@@ -12,6 +13,35 @@ import NavbarMenuIconSvg from "../public/svgs/navbar_menu_icon.svg";
 import SafeIconSvg from "../public/svgs/safe_icon.svg";
 import SupportIconSvg from "../public/svgs/support_icon.svg";
 import CheckIconSvg from "../public/svgs/check_icon.svg";
+import Link from "next/link";
+
+type NavbarMenuOptionsType = { label: string; href: string };
+
+const NAVBAR_MENU_OPTIONS: NavbarMenuOptionsType[] = [
+  { label: "Sell", href: "/sell" },
+  { label: "Marketplace", href: "/marketplace" },
+  { label: "Community", href: "/community" },
+  { label: "Develop", href: "/develop" },
+  { label: "Resources", href: "/resources" },
+];
+
+const FOOTER_TEXT_ICONS_ITEMS = [
+  {
+    text: "30 day money back guarantee",
+    src: CheckIconSvg,
+    alt: "check-icon",
+  },
+  {
+    text: "Support teams across the world",
+    src: SupportIconSvg,
+    alt: "check-icon",
+  },
+  {
+    text: "Safe & Secure online payment",
+    src: SafeIconSvg,
+    alt: "safe-icon",
+  },
+];
 
 const NavbarSectionTitle = ({
   children,
@@ -20,11 +50,56 @@ const NavbarSectionTitle = ({
   children: any;
   href: string;
 }) => (
-  <Col md={1} className="navbar-section-title-container">
+  <Col className="navbar-section-title-container text-center">
     <a href={href} className="navbar-section-title text-decoration-none">
       {children}
     </a>
   </Col>
+);
+
+const NavBarBrandImage = () => (
+  <Link href="/">
+    <img
+      src={WooCommerceLogoImg.src}
+      alt="woo-commerce logo"
+      className="woo-commerce-navbar-brand-img"
+    />
+  </Link>
+);
+
+const NavbarDesktopSectionsTitles = ({
+  menu_options,
+}: {
+  menu_options: NavbarMenuOptionsType[];
+}) => (
+  <Row>
+    {menu_options.map(({ href, label }) => (
+      <NavbarSectionTitle href={href} key={href}>
+        {label}
+      </NavbarSectionTitle>
+    ))}
+  </Row>
+);
+
+const NavbarMobileCollapsableTitles = ({
+  menuIsOpen,
+  sections,
+}: {
+  sections: NavbarMenuOptionsType[];
+  menuIsOpen: boolean;
+}) => (
+  <Collapse
+    in={menuIsOpen}
+    className="navbar-collapsable w-100 px-3 pb-3 d-md-none"
+  >
+    <div>
+      {sections.map(({ href, label }: NavbarMenuOptionsType) => (
+        <NavbarSectionTitle href={href} key={href}>
+          {label}
+        </NavbarSectionTitle>
+      ))}
+    </div>
+  </Collapse>
 );
 
 const FooterIconTextItem = ({
@@ -35,48 +110,28 @@ const FooterIconTextItem = ({
   text: string;
   src: string;
   alt: string;
-}) => {
-  return (
-    <div className="footer-text-icon-container">
-      <Image
-        src={src}
-        alt={alt}
-        width="26px"
-        height="25px"
-        className="footer-text-icon-image"
-      />
-      <div className="footer-text-icon-title">{text}</div>
-    </div>
-  );
-};
+}) => (
+  <div className="footer-text-icon-container">
+    <Image
+      src={src}
+      alt={alt}
+      width="26px"
+      height="25px"
+      className="footer-text-icon-image"
+    />
+    <div className="footer-text-icon-title">{text}</div>
+  </div>
+);
 
-const FooterIconsTextsContainer = () => {
-  return (
-    <Row className="footer-text-icons-container">
-      {[
-        {
-          text: "30 day money back guarantee",
-          src: CheckIconSvg,
-          alt: "check-icon",
-        },
-        {
-          text: "Support teams across the world",
-          src: SupportIconSvg,
-          alt: "check-icon",
-        },
-        {
-          text: "Safe & Secure online payment",
-          src: SafeIconSvg,
-          alt: "safe-icon",
-        },
-      ].map(({ text, src, alt }, key) => (
-        <Col md={3} xs={12} key={key}>
-          <FooterIconTextItem text={text} src={src} alt={alt} />
-        </Col>
-      ))}
-    </Row>
-  );
-};
+const FooterIconsTextsContainer = () => (
+  <Row className="footer-text-icons-container">
+    {FOOTER_TEXT_ICONS_ITEMS.map(({ text, src, alt }, key) => (
+      <Col md={3} xs={12} key={key}>
+        <FooterIconTextItem text={text} src={src} alt={alt} />
+      </Col>
+    ))}
+  </Row>
+);
 
 const FooterColumnTitle = ({ children }: { children: any }) => (
   <div className="footer-column-title">{children}</div>
@@ -101,7 +156,7 @@ const FooterDivider = () => <div className="footer-divider" />;
 
 const FooterSectionsLinks = () => (
   <Container>
-    <Row className="footer-sections-links">
+    <Row>
       <Col md={{ offset: 2, span: 1 }} className="footer-column-container">
         <FooterColumnTitle>Who we Are</FooterColumnTitle>
         <FooterColumnLink href="/about">About</FooterColumnLink>
@@ -161,13 +216,6 @@ const FooterSectionsLinks = () => (
 
 const MainLayout = ({ children }: { children: any }) => {
   const [menuIsOpen, setMenuIsOpen] = React.useState(false);
-  const menuOptions = [
-    { label: "Sell", href: "/sell" },
-    { label: "Marketplace", href: "/marketplace" },
-    { label: "Community", href: "/community" },
-    { label: "Develop", href: "/develop" },
-    { label: "Resources", href: "/resources" },
-  ];
   return (
     <>
       <Head>
@@ -175,70 +223,52 @@ const MainLayout = ({ children }: { children: any }) => {
         <meta name="description" content="Generated by create next app" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <nav className="navbar navbar-light bg-light navbar-custom">
-        <Container className="navbar-container">
-          <Row className="w-100">
-            <Col xs={6} md={2}>
-              <a
-                className="navbar-brand woo-commerce-navbar-brand-img"
-                href="#"
-              >
-                <Image
-                  src={WooCommerceLogoImg}
-                  layout="responsive"
-                  objectFit="cover"
-                  alt="woo-commerce logo"
+      <Row className="m-0">
+        <nav className="navbar-custom">
+          <Container>
+            <Row>
+              <Col xs={6} md={2}>
+                <NavBarBrandImage />
+              </Col>
+              <Col xs={6} md={10} xl={5} className="d-none d-md-block">
+                <NavbarDesktopSectionsTitles
+                  menu_options={NAVBAR_MENU_OPTIONS}
                 />
-              </a>
-            </Col>
-            <Col
-              xs={6}
-              className="d-sm-none text-align-right navbar-menu-btn-container"
-            >
-              <Button
-                onClick={() => setMenuIsOpen(!menuIsOpen)}
-                aria-controls="example-collapse-text"
-                aria-expanded={menuIsOpen}
-                className="navbar-menu-btn"
-                variant="light"
-              >
-                <Image
-                  src={NavbarMenuIconSvg}
-                  alt="menu-icon"
-                  width="24px"
-                  height="24px"
-                />
-              </Button>
-            </Col>
-            <Collapse in={menuIsOpen} className="navbar-collapsable">
-              <div>
-                {menuOptions.map(({ href, label }) => (
-                  <NavbarSectionTitle href={href} key={href}>
-                    {label}
-                  </NavbarSectionTitle>
-                ))}
-              </div>
-            </Collapse>
-            <Col xs={6} md={10} className="d-none d-md-block">
-              <Row>
-                {menuOptions.map(({ href, label }) => (
-                  <NavbarSectionTitle href={href} key={href}>
-                    {label}
-                  </NavbarSectionTitle>
-                ))}
-              </Row>
-            </Col>
-          </Row>
-        </Container>
-      </nav>
-      <main>
-        <Container className="main-layout-content">{children}</Container>
-      </main>
-      <footer className="footer">
-        <FooterIconsTextsContainer />
-        <FooterDivider />
-        <FooterSectionsLinks />
-      </footer>
+              </Col>
+              <Col xs={6} className="d-md-none text-align-right">
+                <Button
+                  onClick={() => setMenuIsOpen(!menuIsOpen)}
+                  aria-controls="example-collapse-text"
+                  aria-expanded={menuIsOpen}
+                  className="navbar-menu-btn"
+                  variant="light"
+                >
+                  <Image
+                    src={NavbarMenuIconSvg}
+                    alt="menu-icon"
+                    width="24px"
+                    height="24px"
+                  />
+                </Button>
+              </Col>
+            </Row>
+            <Row>
+              <NavbarMobileCollapsableTitles
+                menuIsOpen={menuIsOpen}
+                sections={NAVBAR_MENU_OPTIONS}
+              />
+            </Row>
+          </Container>
+        </nav>
+        <main>
+          <Container className="main-layout-content">{children}</Container>
+        </main>
+        <footer className="footer">
+          <FooterIconsTextsContainer />
+          <FooterDivider />
+          <FooterSectionsLinks />
+        </footer>
+      </Row>
     </>
   );
 };

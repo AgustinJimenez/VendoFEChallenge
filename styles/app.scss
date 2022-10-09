@@ -9,6 +9,7 @@ $secondary-color: #272d4e;
 $gray-color: #94a2b3;
 
 body {
+  margin: 0px;
   background: linear-gradient(
     180deg,
     #e5efff 0%,
@@ -17,29 +18,26 @@ body {
   );
 }
 .woo-commerce-navbar-brand-img {
-  @media (min-width: map.get($grid-breakpoints, "sm")) {
-    width: 117px;
-    height: 25px;
+  @media (min-width: map.get($grid-breakpoints, "md")) {
+    width: 60%;
   }
-  @media (max-width: map.get($grid-breakpoints, "sm")) {
+  @media (max-width: map.get($grid-breakpoints, "md")) {
     width: 100%;
-    height: 17px;
   }
 }
 .main-layout-content {
   margin-top: 60px;
 }
 .navbar-custom {
+  background-color: white;
   padding-top: 20px;
+  padding-bottom: 20px;
   @media (max-width: map.get($grid-breakpoints, "sm")) {
     padding-bottom: 0px;
   }
 }
 .text-align-right {
   text-align: right;
-}
-.navbar-menu-btn-container {
-  padding-right: 0px;
 }
 .navbar-menu-btn {
   background-color: transparent !important;
@@ -48,12 +46,6 @@ body {
 }
 .navbar-collapsable {
   text-align: center;
-}
-.navbar-container {
-  @media (max-width: map.get($grid-breakpoints, "sm")) {
-    margin-right: 0px;
-    margin-left: 0px;
-  }
 }
 .navbar-section-title-container {
   @media (max-width: map.get($grid-breakpoints, "sm")) {
@@ -81,17 +73,18 @@ body {
   }
 }
 .main-title {
-  padding-top: 70px;
   font-family: "Roboto";
   font-style: normal;
   font-weight: 700;
   @media (min-width: map.get($grid-breakpoints, "sm")) {
     font-size: 63.75px;
     line-height: 71px;
+    padding-top: 70px;
   }
   @media (max-width: map.get($grid-breakpoints, "sm")) {
     font-size: 30.13px;
     line-height: 34px;
+    padding-top: 20px;
   }
 
   color: $secondary-color;
@@ -103,6 +96,10 @@ body {
 .main-subtitles-container {
   margin-top: 15px;
   margin-bottom: 25px;
+  @media (max-width: map.get($grid-breakpoints, "sm")) {
+    margin-top: 35px;
+    margin-bottom: 40px;
+  }
 }
 .main-subtitle {
   font-family: "Roboto";
@@ -157,6 +154,9 @@ body {
 }
 .middle-title-container {
   margin-top: 160px;
+  @media (max-width: map.get($grid-breakpoints, "sm")) {
+    margin-top: 100px;
+  }
   margin-bottom: 40px;
 }
 .middle-title-text {
@@ -219,9 +219,6 @@ body {
     padding-right: $spacer * 1;
     padding-left: $spacer * 1;
   }
-}
-.footer-sections-links {
-  // justify-content: center;
 }
 
 .footer-text-icons-container {
