@@ -227,7 +227,7 @@ const MainLayout = ({ children }: { children: any }) => {
         <nav className="navbar-custom">
           <Container>
             <Row>
-              <Col xs={6} md={2}>
+              <Col xs={6} md={2} className="align-self-center">
                 <NavBarBrandImage />
               </Col>
               <Col xs={6} md={10} xl={5} className="d-none d-md-block">

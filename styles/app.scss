@@ -33,7 +33,7 @@ body {
   padding-top: 20px;
   padding-bottom: 20px;
   @media (max-width: map.get($grid-breakpoints, "sm")) {
-    padding-bottom: 0px;
+    padding-bottom: 10px;
   }
 }
 .text-align-right {
@@ -215,7 +215,7 @@ body {
   background-color: $primary-color;
   padding-bottom: 200px;
   padding-top: 80px;
-  @media (max-width: map.get($grid-breakpoints, "sm")) {
+  @media (max-width: map.get($grid-breakpoints, "md")) {
     padding-right: $spacer * 1;
     padding-left: $spacer * 1;
   }
@@ -239,7 +239,7 @@ body {
 .footer-text-icon-container {
   display: flex;
   flex-direction: row;
-  @media (max-width: map.get($grid-breakpoints, "sm")) {
+  @media (max-width: map.get($grid-breakpoints, "md")) {
     padding-bottom: $spacer * 2;
   }
 }
@@ -268,7 +268,7 @@ body {
 }
 
 .footer-column-container {
-  @media (max-width: map.get($grid-breakpoints, "sm")) {
+  @media (max-width: map.get($grid-breakpoints, "md")) {
     padding-bottom: $spacer * 2.5;
   }
 }
@@ -276,7 +276,7 @@ body {
 .footer-divider {
   border: 0.75px solid $primary-color-light;
   margin-bottom: 20px;
-  @media (min-width: map.get($grid-breakpoints, "sm")) {
+  @media (min-width: map.get($grid-breakpoints, "md")) {
     width: 80%;
     justify-content: center;
   }
